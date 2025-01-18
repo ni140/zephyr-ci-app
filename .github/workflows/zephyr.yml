@@ -4,9 +4,9 @@ permissions: read-all
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    type: [opened, reopened, synchronize]
+    pull_request:
+      branches:
+        - master
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
