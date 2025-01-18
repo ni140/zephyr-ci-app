@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2025 Maciej
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 
