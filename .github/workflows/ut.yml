@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        board: [nucleo_f411re, qemu_cortex_m3]
+        board: [qemu_cortex_m3, native_sim, unit_testing]
 
     steps:
       - name: Checkout Code
@@ -36,12 +36,11 @@ jobs:
 
       - name: List tests for ${{ matrix.board }}
         run: |
-          west twister -vvv -p ${{ matrix.board }} --test-tree -T tests
+          west twister -v -p ${{ matrix.board }} --test-tree -T tests
 
       - name: Run Twister for ${{ matrix.board }}
         run: |
-           west twister -vvv -p ${{ matrix.board }} -T tests
-#          west twister -vvv -p unit_testing/unit_testing -T tests
+          west twister -v -p ${{ matrix.board }} -T tests
 
       - name: Save artifact
         uses: actions/upload-artifact@v4.6.0

@@ -1,6 +1,0 @@
-tests:
-  unit.math_lib:
-    type: unit
-    platform_allow:
-      - nucleo_f411re
-      - qemu_cortex_m3

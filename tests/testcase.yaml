@@ -1,0 +1,8 @@
+tests:
+# section.subsection
+  sample.testing.ztest:
+#    build_only: true
+    platform_allow:
+      - nucleo_f411re
+      - qemu_cortex_m3
+    tags: test_framework
