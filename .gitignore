@@ -12,6 +12,7 @@
 !*.json
 !*.md
 !*.txt
+!*.yaml
 !*.yml
 !*.clang-format
 
@@ -24,3 +25,6 @@
 
 # Ignore VSCode directory
 .vscode/
+
+# Ignore Twister directory
+twister-out*/

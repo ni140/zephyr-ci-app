@@ -36,8 +36,17 @@ jobs:
 
       - name: List tests for ${{ matrix.board }}
         run: |
-          zephyr/scripts/twister --test-tree -T tests/unit/math_lib
+          west twister -vvv -p ${{ matrix.board }} --test-tree -T tests
 
       - name: Run Twister for ${{ matrix.board }}
         run: |
-          west twister -T tests/unit/math_lib
+           west twister -vvv -p ${{ matrix.board }} -T tests
+#          west twister -vvv -p unit_testing/unit_testing -T tests
+
+      - name: Save artifact
+        uses: actions/upload-artifact@v4.6.0
+        if: ${{ always() }}
+        with:
+          name: build_artifacts_${{ github.run_id }}_${{ matrix.board }}
+          path: |
+            twister-out/*
