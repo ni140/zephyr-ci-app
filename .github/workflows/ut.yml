@@ -1,0 +1,39 @@
+name: ut
+
+permissions: read-all
+
+on:
+  pull_request:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-in-zephyr-ci-container:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    container: ghcr.io/zephyrproject-rtos/ci:v0.27.4
+    env:
+      CMAKE_PREFIX_PATH: /opt/toolchains
+
+    strategy:
+      matrix:
+        board: [nucleo_f411re, qemu_cortex_m3]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize workspace
+        run: |
+          west init
+          west update
+
+      - name: Run Twister for ${{ matrix.board }}
+        run: |
+          west twister -T tests/unit/math_lib
