@@ -34,6 +34,10 @@ jobs:
           west init
           west update
 
+      - name: List tests for ${{ matrix.board }}
+        run: |
+          zephyr\scripts\twister --test-tree -T tests/unit/math_lib
+
       - name: Run Twister for ${{ matrix.board }}
         run: |
           west twister -T tests/unit/math_lib
