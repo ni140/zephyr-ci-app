@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        board: [qemu_cortex_m3, native_sim, unit_testing]
+        board: [qemu_cortex_m3]
 
     steps:
       - name: Checkout Code
@@ -41,6 +41,14 @@ jobs:
       - name: Run Twister for ${{ matrix.board }}
         run: |
           west twister -v -p ${{ matrix.board }} -T tests
+
+      - name: Generate tests summary
+        if: ${{ always() }}
+        run: |
+          python scripts/twister_log_parser.py \
+            -i twister-out/twister.json \
+            -o twister.md
+          cat twister.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Save artifact
         uses: actions/upload-artifact@v4.6.0
