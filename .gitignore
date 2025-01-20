@@ -11,7 +11,9 @@
 # Allow other text files
 !*.json
 !*.md
+!*.py
 !*.txt
+!*.yaml
 !*.yml
 !*.clang-format
 
@@ -24,3 +26,6 @@
 
 # Ignore VSCode directory
 .vscode/
+
+# Ignore Twister directory
+twister-out*/

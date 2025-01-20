@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2016 Intel Corporation
+ * Copyright (c) 2025 Maciej
  *
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: MIT
  */
 
 #include <zephyr/kernel.h>

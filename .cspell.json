@@ -9,6 +9,9 @@
     "maciej",
     "nucleo",
     "printk",
-    "zephyrproject"
+    "testbinary",
+    "zassert",
+    "zephyrproject",
+    "ztest"
   ]
 }
