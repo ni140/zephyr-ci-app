@@ -24,7 +24,7 @@ jobs:
 
     strategy:
       matrix:
-        board: [nucleo_f411re, qemu_cortex_m3]
+        board: [nucleo_f411re, qemu_cortex_m3, esp32s3_devkitc]
 
     steps:
       - name: Checkout Code
